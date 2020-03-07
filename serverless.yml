@@ -1,0 +1,113 @@
+service:
+  name: lightscm
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-2
+  apiGateway:
+    minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    PRODUCTS_TABLE: products-${opt:stage, self:provider.stage}
+    ORDERS_TABLE: orders-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+      
+resources:
+  Resources:
+    ProductsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: "id"
+            AttributeType: "S"   
+        KeySchema:
+          -
+            AttributeName: "id"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        StreamSpecification:
+          StreamViewType: "NEW_AND_OLD_IMAGES"
+        TableName: ${self:provider.environment.PRODUCTS_TABLE}
+    OrdersDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: "id"
+            AttributeType: "S"   
+        KeySchema:
+          -
+            AttributeName: "id"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        StreamSpecification:
+          StreamViewType: "NEW_AND_OLD_IMAGES"
+        TableName: ${self:provider.environment.ORDERS_TABLE}
+
+functions:
+  createOrder:
+    handler: services/orders/orders.create
+    description: Create a new Order
+    events:
+      - http:
+          method: post
+          path: orders
+          cors: true
+  
+  getOrder:
+    handler: services/orders/orders.get
+    description: Get an Order by ID
+    events:
+      - http:
+          method: get
+          path: orders/{id}
+          cors: true
+
+  listOrder:
+    handler: services/orders/orders.list
+    description: List Orders
+    events:
+      - http:
+          method: get
+          path: orders
+          cors: true
+
+  getProduct:
+    handler: services/orders/products.get
+    memorySize: 128
+    description: Get Product by ID
+    events:
+      - http:
+          method: get
+          path: products/{id}
+          cors: true
