@@ -1,8 +1,11 @@
 export class Order {
-  ID: string;
-  Related: Date;
-  Created: Date;
-  Approved: Date;
-  Status: string;
-  Total: number;
+  id: string;
+  name: string;
+  related: Date;
+  created: Date;
+  approved: Date;
+  status: string;
+  note: string;
+  quantity: number;
+  total: number;
 }

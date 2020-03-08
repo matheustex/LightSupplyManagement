@@ -3,7 +3,9 @@ const AWS = require('aws-sdk');
 
 AWS.config.setPromisesDependency(require('bluebird'));
 
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const dynamoDb = new AWS.DynamoDB.DocumentClient({
+  convertEmptyValues: true
+});
 
 export class DB {
   create(table: string, req: any): Promise<any> {
@@ -21,6 +23,9 @@ export class DB {
         console.log('REQUEST SUCCESSED ', data);
         return {
           statusCode: 200,
+          headers: {
+            "Access-Control-Allow-Origin": "*" // Required for CORS support to work
+          },
           body: JSON.stringify(item)
         }
       }).catch((err) => {
@@ -42,6 +47,9 @@ export class DB {
         console.log(data);
         return {
           statusCode: 200,
+          headers: {
+            "Access-Control-Allow-Origin": "*" // Required for CORS support to work
+          },
           body: JSON.stringify(data.Item)
         }
       }).catch((err) => {
@@ -60,6 +68,9 @@ export class DB {
         console.log(data);
         return {
           statusCode: 200,
+          headers: {
+            "Access-Control-Allow-Origin": "*" // Required for CORS support to work
+          },
           body: JSON.stringify(data.Items)
         }
       }).catch((err) => {
@@ -77,7 +88,7 @@ export class DB {
   }
 
   private buildModel(item: any) {
-    const now = new Date().getDate();
+    const now = new Date().toISOString();
     return {
       ...item,
       id: uuid.v1(),

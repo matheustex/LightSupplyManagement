@@ -14,11 +14,15 @@ export const get: APIGatewayProxyHandler = async (event, _context) => {
 export const create: APIGatewayProxyHandler = async (event, _context) => {
   const requestBody = JSON.parse(event.body);
 
-  const { related } = requestBody;
+  const { related, name } = requestBody;
 
-  if (typeof related !== 'string') {
+  if (typeof related !== 'string' && typeof name !== 'string') {
     return new Error('No related date found');
   }
+
+  requestBody.status = "PENDING";
+  requestBody.total = 0;
+  requestBody.quantity = 0;
 
   const res = await db.create(process.env.ORDERS_TABLE, requestBody);
 
