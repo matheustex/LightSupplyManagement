@@ -1,5 +1,6 @@
 export class Sector {
-  ID: string;
-  Name: string;
-  DepartmentID: string;
+  id: string;
+  name: string;
+  departmentId: string;
+  created: string;
 }

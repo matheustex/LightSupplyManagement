@@ -1,10 +1,10 @@
 export class Item {
-  ID: string;
-  OrderID: string;
-  SectorID: string;
-  DepartmentID: string;
-  ProductID: string;
-  Quantity: number;
-  Total: number;
-  Created: string;
+  id: string;
+  orderId: string;
+  sectorId: string;
+  departmentId: string;
+  productId: string;
+  quantity: number;
+  total: number;
+  created: string;
 }

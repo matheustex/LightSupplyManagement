@@ -1,5 +1,6 @@
 export class Department {
-  ID: string;
-  Name: string;
-  Type: string;
+  id: string;
+  name: string;
+  type: string;
+  created: string;
 }
