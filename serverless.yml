@@ -24,6 +24,7 @@ provider:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     PRODUCTS_TABLE: products-${opt:stage, self:provider.stage}
     ORDERS_TABLE: orders-${opt:stage, self:provider.stage}
+    SECTORS_TABLE: sectors-${opt:stage, self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -73,6 +74,24 @@ resources:
         StreamSpecification:
           StreamViewType: "NEW_AND_OLD_IMAGES"
         TableName: ${self:provider.environment.ORDERS_TABLE}
+    SectorsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: "id"
+            AttributeType: "S"   
+        KeySchema:
+          -
+            AttributeName: "id"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        StreamSpecification:
+          StreamViewType: "NEW_AND_OLD_IMAGES"
+        TableName: ${self:provider.environment.SECTORS_TABLE}
 
 functions:
   createOrder:
@@ -110,4 +129,22 @@ functions:
       - http:
           method: get
           path: products/{id}
+          cors: true
+  getSector:
+    handler: services/sectors/sectors.get
+    memorySize: 128
+    description: Get Product by ID
+    events:
+      - http:
+          method: get
+          path: sectors/{id}
+          cors: true
+  listSectors:
+    handler: services/sectors/sectors.list
+    memorySize: 128
+    description: Get Product by ID
+    events:
+      - http:
+          method: get
+          path: sectors
           cors: true
