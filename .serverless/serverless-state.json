@@ -17,7 +17,8 @@
         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
         "PRODUCTS_TABLE": "products-dev",
         "ORDERS_TABLE": "orders-dev",
-        "SECTORS_TABLE": "sectors-dev"
+        "SECTORS_TABLE": "sectors-dev",
+        "DEPARTMENTS_TABLE": "departments-dev"
       },
       "iamRoleStatements": [
         {
@@ -129,6 +130,24 @@
               "LogGroupName": "/aws/lambda/lightscm-dev-listSectors"
             }
           },
+          "CreateDepartmentLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/lightscm-dev-createDepartment"
+            }
+          },
+          "GetDepartmentLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/lightscm-dev-getDepartment"
+            }
+          },
+          "ListDepartmentLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/lightscm-dev-listDepartment"
+            }
+          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -216,7 +235,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605055529580-2020-11-11T00:45:29.580Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-createOrder",
               "Handler": "services/orders/orders.create",
@@ -235,7 +254,8 @@
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev"
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
                 }
               }
             },
@@ -244,14 +264,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateOrderLambdaVersionuJMgP9FVhh8s2hCL8KVILRHUurIRYKI2jfWnDg9I": {
+          "CreateOrderLambdaVersionEWzu71Ih45OFzviwCUXREBePmWwfakBtAAeJWoEky8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateOrderLambdaFunction"
               },
-              "CodeSha256": "j9tiC/yteosSxlN+WeNzPo4NgSwO4BtBwrHsW4e8nzA=",
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
               "Description": "Create a new Order"
             }
           },
@@ -262,7 +282,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605055529580-2020-11-11T00:45:29.580Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getOrder",
               "Handler": "services/orders/orders.get",
@@ -281,7 +301,8 @@
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev"
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
                 }
               }
             },
@@ -290,14 +311,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetOrderLambdaVersionHFkDvYkCZrBAp4y37nKk1vZEGWN3VGrawHtwHgFI": {
+          "GetOrderLambdaVersiontqMCkRoOR0prUkVYd5np3P4Z6TCkut2uEiq2TMyZY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetOrderLambdaFunction"
               },
-              "CodeSha256": "j9tiC/yteosSxlN+WeNzPo4NgSwO4BtBwrHsW4e8nzA=",
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
               "Description": "Get an Order by ID"
             }
           },
@@ -308,7 +329,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605055529580-2020-11-11T00:45:29.580Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listOrder",
               "Handler": "services/orders/orders.list",
@@ -327,7 +348,8 @@
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev"
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
                 }
               }
             },
@@ -336,14 +358,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ListOrderLambdaVersion1Swi0vzafkWNVvRCEzShb7C9ql4bkfnXfKb0Zdz7Y": {
+          "ListOrderLambdaVersionqGYQWLFThVKJFYB1dHAv7Mp6h0NOfucG9anCNpJoI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListOrderLambdaFunction"
               },
-              "CodeSha256": "j9tiC/yteosSxlN+WeNzPo4NgSwO4BtBwrHsW4e8nzA=",
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
               "Description": "List Orders"
             }
           },
@@ -354,7 +376,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605055529580-2020-11-11T00:45:29.580Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getProduct",
               "Handler": "services/orders/products.get",
@@ -373,7 +395,8 @@
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev"
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
                 }
               }
             },
@@ -382,14 +405,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetProductLambdaVersionDcMPevSs92T9DV8VETy5UeOFevB2J3QIs7rdQvqfRQY": {
+          "GetProductLambdaVersioncHnEgFsNWq3ptoOLjqvDulsVoS7z8SSSenGKs5I": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetProductLambdaFunction"
               },
-              "CodeSha256": "j9tiC/yteosSxlN+WeNzPo4NgSwO4BtBwrHsW4e8nzA=",
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
               "Description": "Get Product by ID"
             }
           },
@@ -400,7 +423,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605055529580-2020-11-11T00:45:29.580Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getSector",
               "Handler": "services/sectors/sectors.get",
@@ -419,7 +442,8 @@
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev"
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
                 }
               }
             },
@@ -428,14 +452,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetSectorLambdaVersioniXUb4ufILajwndIVOHLOIWraJsk08W8VS7q5qkzs0": {
+          "GetSectorLambdaVersionDOuyEDEgtqwMXhkxsPvpGIGHidDq0qEhtDUYYWb8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetSectorLambdaFunction"
               },
-              "CodeSha256": "j9tiC/yteosSxlN+WeNzPo4NgSwO4BtBwrHsW4e8nzA=",
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
               "Description": "Get Product by ID"
             }
           },
@@ -446,7 +470,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605055529580-2020-11-11T00:45:29.580Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listSectors",
               "Handler": "services/sectors/sectors.list",
@@ -465,7 +489,8 @@
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev"
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
                 }
               }
             },
@@ -474,15 +499,156 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ListSectorsLambdaVersionwHwuGfVYfjtCBQZJyHP5Mao3vAoxjjgjphndT4DM": {
+          "ListSectorsLambdaVersionmlAI8BpQjx257tnSmopt5bk09f6ur0p3I9hinN6H5fw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListSectorsLambdaFunction"
               },
-              "CodeSha256": "j9tiC/yteosSxlN+WeNzPo4NgSwO4BtBwrHsW4e8nzA=",
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
               "Description": "Get Product by ID"
+            }
+          },
+          "CreateDepartmentLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+              },
+              "FunctionName": "lightscm-dev-createDepartment",
+              "Handler": "services/department/department.create",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs12.x",
+              "Timeout": 6,
+              "Description": "Create a new Department",
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
+                  "PRODUCTS_TABLE": "products-dev",
+                  "ORDERS_TABLE": "orders-dev",
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
+                }
+              }
+            },
+            "DependsOn": [
+              "CreateDepartmentLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "CreateDepartmentLambdaVersion1CIc0GOLhcwEq84cvl5t0eHKUktShDw2iuPWzF9Wo0": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "CreateDepartmentLambdaFunction"
+              },
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "Description": "Create a new Department"
+            }
+          },
+          "GetDepartmentLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+              },
+              "FunctionName": "lightscm-dev-getDepartment",
+              "Handler": "services/department/department.get",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs12.x",
+              "Timeout": 6,
+              "Description": "Get an Department by ID",
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
+                  "PRODUCTS_TABLE": "products-dev",
+                  "ORDERS_TABLE": "orders-dev",
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
+                }
+              }
+            },
+            "DependsOn": [
+              "GetDepartmentLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "GetDepartmentLambdaVersionZ6CHf6wX4K4r3JlOMeTJrg55NvXqruPESySdW4oU": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GetDepartmentLambdaFunction"
+              },
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "Description": "Get an Department by ID"
+            }
+          },
+          "ListDepartmentLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+              },
+              "FunctionName": "lightscm-dev-listDepartment",
+              "Handler": "services/department/department.list",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs12.x",
+              "Timeout": 6,
+              "Description": "List Departments",
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
+                  "PRODUCTS_TABLE": "products-dev",
+                  "ORDERS_TABLE": "orders-dev",
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev"
+                }
+              }
+            },
+            "DependsOn": [
+              "ListDepartmentLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "ListDepartmentLambdaVersion5A8GmcqXT9iEly42skjuYsCfURyOXct1JjlrAunZ3M": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ListDepartmentLambdaFunction"
+              },
+              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "Description": "List Departments"
             }
           },
           "ApiGatewayRestApi": {
@@ -572,6 +738,33 @@
             "Properties": {
               "ParentId": {
                 "Ref": "ApiGatewayResourceSectors"
+              },
+              "PathPart": "{id}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceDepartments": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "departments",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceDepartmentsIdVar": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceDepartments"
               },
               "PathPart": "{id}",
               "RestApiId": {
@@ -798,6 +991,96 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceSectors"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodDepartmentsOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceDepartments"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodDepartmentsIdVarOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceDepartmentsIdVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -1062,7 +1345,136 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1605055517156": {
+          "ApiGatewayMethodDepartmentsPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceDepartments"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "CreateDepartmentLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayMethodDepartmentsIdVarGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceDepartmentsIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GetDepartmentLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayMethodDepartmentsGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceDepartments"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "ListDepartmentLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayDeployment1605315526721": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1076,12 +1488,17 @@
               "ApiGatewayMethodProductsIdVarOptions",
               "ApiGatewayMethodSectorsIdVarOptions",
               "ApiGatewayMethodSectorsOptions",
+              "ApiGatewayMethodDepartmentsOptions",
+              "ApiGatewayMethodDepartmentsIdVarOptions",
               "ApiGatewayMethodOrdersPost",
               "ApiGatewayMethodOrdersIdVarGet",
               "ApiGatewayMethodOrdersGet",
               "ApiGatewayMethodProductsIdVarGet",
               "ApiGatewayMethodSectorsIdVarGet",
-              "ApiGatewayMethodSectorsGet"
+              "ApiGatewayMethodSectorsGet",
+              "ApiGatewayMethodDepartmentsPost",
+              "ApiGatewayMethodDepartmentsIdVarGet",
+              "ApiGatewayMethodDepartmentsGet"
             ]
           },
           "CreateOrderLambdaPermissionApiGateway": {
@@ -1306,6 +1723,117 @@
               }
             }
           },
+          "CreateDepartmentLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "CreateDepartmentLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "GetDepartmentLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "GetDepartmentLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "ListDepartmentLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ListDepartmentLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
           "ProductsDynamoDbTable": {
             "Type": "AWS::DynamoDB::Table",
             "DeletionPolicy": "Retain",
@@ -1383,6 +1911,32 @@
               },
               "TableName": "sectors-dev"
             }
+          },
+          "DepartmentDynamoDbTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ],
+              "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+              },
+              "StreamSpecification": {
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+              },
+              "TableName": "departments-dev"
+            }
           }
         },
         "Outputs": {
@@ -1394,37 +1948,55 @@
           "CreateOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateOrderLambdaVersionuJMgP9FVhh8s2hCL8KVILRHUurIRYKI2jfWnDg9I"
+              "Ref": "CreateOrderLambdaVersionEWzu71Ih45OFzviwCUXREBePmWwfakBtAAeJWoEky8"
             }
           },
           "GetOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetOrderLambdaVersionHFkDvYkCZrBAp4y37nKk1vZEGWN3VGrawHtwHgFI"
+              "Ref": "GetOrderLambdaVersiontqMCkRoOR0prUkVYd5np3P4Z6TCkut2uEiq2TMyZY"
             }
           },
           "ListOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListOrderLambdaVersion1Swi0vzafkWNVvRCEzShb7C9ql4bkfnXfKb0Zdz7Y"
+              "Ref": "ListOrderLambdaVersionqGYQWLFThVKJFYB1dHAv7Mp6h0NOfucG9anCNpJoI"
             }
           },
           "GetProductLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetProductLambdaVersionDcMPevSs92T9DV8VETy5UeOFevB2J3QIs7rdQvqfRQY"
+              "Ref": "GetProductLambdaVersioncHnEgFsNWq3ptoOLjqvDulsVoS7z8SSSenGKs5I"
             }
           },
           "GetSectorLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetSectorLambdaVersioniXUb4ufILajwndIVOHLOIWraJsk08W8VS7q5qkzs0"
+              "Ref": "GetSectorLambdaVersionDOuyEDEgtqwMXhkxsPvpGIGHidDq0qEhtDUYYWb8"
             }
           },
           "ListSectorsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListSectorsLambdaVersionwHwuGfVYfjtCBQZJyHP5Mao3vAoxjjgjphndT4DM"
+              "Ref": "ListSectorsLambdaVersionmlAI8BpQjx257tnSmopt5bk09f6ur0p3I9hinN6H5fw"
+            }
+          },
+          "CreateDepartmentLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "CreateDepartmentLambdaVersion1CIc0GOLhcwEq84cvl5t0eHKUktShDw2iuPWzF9Wo0"
+            }
+          },
+          "GetDepartmentLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "GetDepartmentLambdaVersionZ6CHf6wX4K4r3JlOMeTJrg55NvXqruPESySdW4oU"
+            }
+          },
+          "ListDepartmentLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ListDepartmentLambdaVersion5A8GmcqXT9iEly42skjuYsCfURyOXct1JjlrAunZ3M"
             }
           },
           "ServiceEndpoint": {
@@ -1571,7 +2143,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "CreateOrderLambdaVersionuJMgP9FVhh8s2hCL8KVILRHUurIRYKI2jfWnDg9I"
+        "versionLogicalId": "CreateOrderLambdaVersionEWzu71Ih45OFzviwCUXREBePmWwfakBtAAeJWoEky8"
       },
       "getOrder": {
         "handler": "services/orders/orders.get",
@@ -1612,7 +2184,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetOrderLambdaVersionHFkDvYkCZrBAp4y37nKk1vZEGWN3VGrawHtwHgFI"
+        "versionLogicalId": "GetOrderLambdaVersiontqMCkRoOR0prUkVYd5np3P4Z6TCkut2uEiq2TMyZY"
       },
       "listOrder": {
         "handler": "services/orders/orders.list",
@@ -1653,7 +2225,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "ListOrderLambdaVersion1Swi0vzafkWNVvRCEzShb7C9ql4bkfnXfKb0Zdz7Y"
+        "versionLogicalId": "ListOrderLambdaVersionqGYQWLFThVKJFYB1dHAv7Mp6h0NOfucG9anCNpJoI"
       },
       "getProduct": {
         "handler": "services/orders/products.get",
@@ -1695,7 +2267,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetProductLambdaVersionDcMPevSs92T9DV8VETy5UeOFevB2J3QIs7rdQvqfRQY"
+        "versionLogicalId": "GetProductLambdaVersioncHnEgFsNWq3ptoOLjqvDulsVoS7z8SSSenGKs5I"
       },
       "getSector": {
         "handler": "services/sectors/sectors.get",
@@ -1737,7 +2309,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetSectorLambdaVersioniXUb4ufILajwndIVOHLOIWraJsk08W8VS7q5qkzs0"
+        "versionLogicalId": "GetSectorLambdaVersionDOuyEDEgtqwMXhkxsPvpGIGHidDq0qEhtDUYYWb8"
       },
       "listSectors": {
         "handler": "services/sectors/sectors.list",
@@ -1779,7 +2351,130 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "ListSectorsLambdaVersionwHwuGfVYfjtCBQZJyHP5Mao3vAoxjjgjphndT4DM"
+        "versionLogicalId": "ListSectorsLambdaVersionmlAI8BpQjx257tnSmopt5bk09f6ur0p3I9hinN6H5fw"
+      },
+      "createDepartment": {
+        "handler": "services/department/department.create",
+        "description": "Create a new Department",
+        "events": [
+          {
+            "http": {
+              "method": "post",
+              "path": "departments",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "lightscm-dev-createDepartment",
+        "package": {
+          "artifact": ".serverless/lightscm.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "CreateDepartmentLambdaVersion1CIc0GOLhcwEq84cvl5t0eHKUktShDw2iuPWzF9Wo0"
+      },
+      "getDepartment": {
+        "handler": "services/department/department.get",
+        "description": "Get an Department by ID",
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "departments/{id}",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "lightscm-dev-getDepartment",
+        "package": {
+          "artifact": ".serverless/lightscm.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "GetDepartmentLambdaVersionZ6CHf6wX4K4r3JlOMeTJrg55NvXqruPESySdW4oU"
+      },
+      "listDepartment": {
+        "handler": "services/department/department.list",
+        "description": "List Departments",
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "departments",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "lightscm-dev-listDepartment",
+        "package": {
+          "artifact": ".serverless/lightscm.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "ListDepartmentLambdaVersion5A8GmcqXT9iEly42skjuYsCfURyOXct1JjlrAunZ3M"
       }
     },
     "resources": {
@@ -1861,6 +2556,32 @@
             },
             "TableName": "sectors-dev"
           }
+        },
+        "DepartmentDynamoDbTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "id",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "id",
+                "KeyType": "HASH"
+              }
+            ],
+            "ProvisionedThroughput": {
+              "ReadCapacityUnits": 1,
+              "WriteCapacityUnits": 1
+            },
+            "StreamSpecification": {
+              "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "TableName": "departments-dev"
+          }
         }
       },
       "Outputs": {}
@@ -1870,7 +2591,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/lightscm/dev/1605055529580-2020-11-11T00:45:29.580Z",
+    "artifactDirectoryName": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z",
     "artifact": ""
   }
 }

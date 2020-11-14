@@ -25,6 +25,7 @@ provider:
     PRODUCTS_TABLE: products-${opt:stage, self:provider.stage}
     ORDERS_TABLE: orders-${opt:stage, self:provider.stage}
     SECTORS_TABLE: sectors-${opt:stage, self:provider.stage}
+    DEPARTMENTS_TABLE: departments-${opt:stage, self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -92,6 +93,24 @@ resources:
         StreamSpecification:
           StreamViewType: "NEW_AND_OLD_IMAGES"
         TableName: ${self:provider.environment.SECTORS_TABLE}
+    DepartmentDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: "id"
+            AttributeType: "S"   
+        KeySchema:
+          -
+            AttributeName: "id"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        StreamSpecification:
+          StreamViewType: "NEW_AND_OLD_IMAGES"
+        TableName: ${self:provider.environment.DEPARTMENTS_TABLE}
 
 functions:
   createOrder:
@@ -102,7 +121,6 @@ functions:
           method: post
           path: orders
           cors: true
-  
   getOrder:
     handler: services/orders/orders.get
     description: Get an Order by ID
@@ -111,7 +129,6 @@ functions:
           method: get
           path: orders/{id}
           cors: true
-
   listOrder:
     handler: services/orders/orders.list
     description: List Orders
@@ -120,7 +137,6 @@ functions:
           method: get
           path: orders
           cors: true
-
   getProduct:
     handler: services/orders/products.get
     memorySize: 128
@@ -147,4 +163,28 @@ functions:
       - http:
           method: get
           path: sectors
+          cors: true
+  createDepartment:
+    handler: services/department/department.create
+    description: Create a new Department
+    events:
+      - http:
+          method: post
+          path: departments
+          cors: true
+  getDepartment:
+    handler: services/department/department.get
+    description: Get an Department by ID
+    events:
+      - http:
+          method: get
+          path: departments/{id}
+          cors: true
+  listDepartment:
+    handler: services/department/department.list
+    description: List Departments
+    events:
+      - http:
+          method: get
+          path: departments
           cors: true
