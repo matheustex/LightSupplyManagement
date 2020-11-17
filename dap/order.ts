@@ -1,3 +1,4 @@
+import { Item } from './item';
 export class Order {
   id: string;
   name: string;
@@ -8,4 +9,5 @@ export class Order {
   note: string;
   quantity: number;
   total: number;
+  items: Item[];
 }

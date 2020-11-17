@@ -26,6 +26,7 @@ provider:
     ORDERS_TABLE: orders-${opt:stage, self:provider.stage}
     SECTORS_TABLE: sectors-${opt:stage, self:provider.stage}
     DEPARTMENTS_TABLE: departments-${opt:stage, self:provider.stage}
+    ITEMS_TABLE: items-${opt:stage, self:provider.stage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -111,6 +112,24 @@ resources:
         StreamSpecification:
           StreamViewType: "NEW_AND_OLD_IMAGES"
         TableName: ${self:provider.environment.DEPARTMENTS_TABLE}
+    ItemDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: "id"
+            AttributeType: "S"   
+        KeySchema:
+          -
+            AttributeName: "id"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        StreamSpecification:
+          StreamViewType: "NEW_AND_OLD_IMAGES"
+        TableName: ${self:provider.environment.ITEMS_TABLE}
 
 functions:
   createOrder:
@@ -120,6 +139,14 @@ functions:
       - http:
           method: post
           path: orders
+          cors: true
+  updateOrder:
+    handler: services/orders/orders.update
+    description: Update a Order
+    events:
+      - http:
+          method: put
+          path: orders/{id}
           cors: true
   getOrder:
     handler: services/orders/orders.get

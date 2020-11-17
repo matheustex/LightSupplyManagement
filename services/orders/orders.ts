@@ -1,3 +1,4 @@
+import { Item } from './../../dap/item';
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 import { DB } from '../../shared/db';
@@ -25,6 +26,14 @@ export const create: APIGatewayProxyHandler = async (event, _context) => {
   requestBody.quantity = 0;
 
   const res = await db.create(process.env.ORDERS_TABLE, requestBody);
+
+  return res;
+}
+
+export const update: APIGatewayProxyHandler = async (event, _context) => {
+  const requestBody = JSON.parse(event.body);
+ 
+  const res = await db.update(process.env.ORDERS_TABLE, requestBody);
 
   return res;
 }

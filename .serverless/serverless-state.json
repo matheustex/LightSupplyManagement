@@ -235,7 +235,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-createOrder",
               "Handler": "services/orders/orders.create",
@@ -282,7 +282,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getOrder",
               "Handler": "services/orders/orders.get",
@@ -329,7 +329,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listOrder",
               "Handler": "services/orders/orders.list",
@@ -376,7 +376,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getProduct",
               "Handler": "services/orders/products.get",
@@ -423,7 +423,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getSector",
               "Handler": "services/sectors/sectors.get",
@@ -470,7 +470,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listSectors",
               "Handler": "services/sectors/sectors.list",
@@ -517,7 +517,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-createDepartment",
               "Handler": "services/department/department.create",
@@ -564,7 +564,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getDepartment",
               "Handler": "services/department/department.get",
@@ -611,7 +611,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listDepartment",
               "Handler": "services/department/department.list",
@@ -1474,7 +1474,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1605315526721": {
+          "ApiGatewayDeployment1605315772707": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -2591,7 +2591,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/lightscm/dev/1605315536395-2020-11-14T00:58:56.395Z",
+    "artifactDirectoryName": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z",
     "artifact": ""
   }
 }

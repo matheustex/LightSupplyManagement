@@ -78,9 +78,34 @@ export class DB {
         return err;
       });
   }
+  
+  update(table: string, item: any) {
+  item.updated = new Date().toISOString();
 
-  update() {
-    return "Teste";
+  let updateExpression = 'set ';
+  let expressionAttributeValues = {};
+  let expressionAttributeNames = {};
+
+  for (const property in item) {
+    updateExpression += ` #${property} = :${property} ,`;
+    expressionAttributeNames['#' + property] = property;
+    expressionAttributeValues[':' + property] = item[property];
+  }
+
+  // Cleaning the last comma to not break the update expression
+  updateExpression = updateExpression.slice(0, -1);
+
+  const params = {
+    TableName: table,
+    Key: {
+      'id': item.id
+    },
+    UpdateExpression: updateExpression,
+    ExpressionAttributeNames: expressionAttributeNames,
+    ExpressionAttributeValues: expressionAttributeValues
+  };
+
+   return dynamoDb.update(params).promise();
   }
 
   delete() {
