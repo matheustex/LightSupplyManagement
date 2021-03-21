@@ -1,45 +1,72 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
-import 'source-map-support/register';
 import { DB } from '@utils/db';
+import { Order } from '@model/order';
 
-const db: DB = new DB();
+export class OrdersService {
+  private db: DB;
+  private table: string = process.env.ORDERS_TABLE;
 
-export const get: APIGatewayProxyHandler = async (event, _context) => {
-  console.log("starting event");
-  const res = await db.get(process.env.ORDERS_TABLE, event.pathParameters.id);
-
-  return res
-}
-
-export const create: APIGatewayProxyHandler = async (event, _context) => {
-  const requestBody = JSON.parse(event.body);
-
-  const { related, name } = requestBody;
-
-  if (typeof related !== 'string' && typeof name !== 'string') {
-    return new Error('No related date found');
+  constructor() {
+    this.db = new DB();
   }
 
-  requestBody.status = "PENDING";
-  requestBody.total = 0;
-  requestBody.quantity = 0;
+  /**
+   * Create Order
+   * @param params
+   */
+  protected async createOrder (params: Order): Promise<Order> {
+    try {
+      const { related, name } = params;
 
-  const res = await db.create(process.env.ORDERS_TABLE, requestBody);
+      if (typeof related !== 'string' && typeof name !== 'string') {
+        throw new Error('No related date found');
+      }
 
-  return res;
-}
+      const request = { ...params, status: 'PENDING', total: 0, quantity: 0};
+      const response = await this.db.create(this.table, request)
 
-export const update: APIGatewayProxyHandler = async (event, _context) => {
-  const requestBody = JSON.parse(event.body);
- 
-  const res = await db.update(process.env.ORDERS_TABLE, requestBody);
+      return response;
+    } catch (err) {
+      console.error(err);
 
-  return res;
-}
+      throw err;
+    }
+  }
 
-export const list: APIGatewayProxyHandler = async (_event, _context) => {
-  console.log("starting event");
-  const res = await db.list(process.env.ORDERS_TABLE);
+  /**
+   * Update a order by id
+   * @param id
+   * @param data
+   */
+  protected async updateOrder (order: Order): Promise<Order> {
+    try {
+      const orderUpdated = await this.db.update(this.table, order);
+      return orderUpdated;
+    } catch (error) {
+      console.error(error);
 
-  return res
+      throw error;
+    }
+  }
+
+  protected async listOrders (): Promise<Order> {
+    try {
+      const orderUpdated = await this.db.list(this.table)
+      return orderUpdated;
+    } catch (error) {
+      console.error(error);
+
+      throw error;
+    }
+  }
+
+  protected async getOrder (id: string): Promise<Order> {
+    try {
+      const orderUpdated = await this.db.get(this.table, id)
+      return orderUpdated;
+    } catch (error) {
+      console.error(error);
+
+      throw error;
+    }
+  }
 }

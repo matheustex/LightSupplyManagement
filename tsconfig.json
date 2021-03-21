@@ -21,7 +21,7 @@
   "include": [
     "./**/*.ts",
     "src/app/service/department"
-  ],
+, "webpack.config.js", "webpack.config.js"  ],
   "exclude": [
     "node_modules/**/*",
     ".serverless/**/*",

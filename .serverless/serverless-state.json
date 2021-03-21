@@ -119,42 +119,6 @@
               "LogGroupName": "/aws/lambda/lightscm-dev-listOrder"
             }
           },
-          "GetProductLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/lightscm-dev-getProduct"
-            }
-          },
-          "GetSectorLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/lightscm-dev-getSector"
-            }
-          },
-          "ListSectorsLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/lightscm-dev-listSectors"
-            }
-          },
-          "CreateDepartmentLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/lightscm-dev-createDepartment"
-            }
-          },
-          "GetDepartmentLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/lightscm-dev-getDepartment"
-            }
-          },
-          "ListDepartmentLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/lightscm-dev-listDepartment"
-            }
-          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -242,10 +206,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1616344823209-2021-03-21T16:40:23.209Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-createOrder",
-              "Handler": "services/orders/orders.create",
+              "Handler": "./src/app/handler.createOrder",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -272,14 +236,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateOrderLambdaVersionx2lr1t50SJNJmR7hanfScFZcZ0i9wOnFPOzzPdq3io": {
+          "CreateOrderLambdaVersionq0rRbCNDKweNng8L3v6jeJALRXApKTxZqxIEVCB6GQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateOrderLambdaFunction"
               },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
+              "CodeSha256": "cOQa5rCQeJ17kuCFRmwJhlBcQaM0nLn9rV2BMfP8HL8=",
               "Description": "Create a new Order"
             }
           },
@@ -290,10 +254,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1616344823209-2021-03-21T16:40:23.209Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-updateOrder",
-              "Handler": "services/orders/orders.update",
+              "Handler": "./src/app/handler.updateOrder",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -320,14 +284,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "UpdateOrderLambdaVersionpwAWdxQNP3D2tPb2zGeFeQYeSyDJFWHtXHAFkJjS2s": {
+          "UpdateOrderLambdaVersionP1vuDJwrHv5ancXrqpKsHDZU9Bj0oEOQWEUOKwa98": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateOrderLambdaFunction"
               },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
+              "CodeSha256": "cOQa5rCQeJ17kuCFRmwJhlBcQaM0nLn9rV2BMfP8HL8=",
               "Description": "Update a Order"
             }
           },
@@ -338,10 +302,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1616344823209-2021-03-21T16:40:23.209Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getOrder",
-              "Handler": "services/orders/orders.get",
+              "Handler": "./src/app/handler.getOrder",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -368,14 +332,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetOrderLambdaVersionBvmzVzJdrTKYGTXhQYwae22U8XN7UxsODoDwwHcjA": {
+          "GetOrderLambdaVersioneC17a48o2KXVXvOKalMNtGWVTPMu7nssXEAwKpcSk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetOrderLambdaFunction"
               },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
+              "CodeSha256": "cOQa5rCQeJ17kuCFRmwJhlBcQaM0nLn9rV2BMfP8HL8=",
               "Description": "Get an Order by ID"
             }
           },
@@ -386,10 +350,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1616344823209-2021-03-21T16:40:23.209Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listOrder",
-              "Handler": "services/orders/orders.list",
+              "Handler": "./src/app/handler.listOrder",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -416,303 +380,15 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ListOrderLambdaVersionQ33tOzEWOQmCeDEzyCM9zSzE635IKfzII2JJIuqcj1U": {
+          "ListOrderLambdaVersionUf7G0DerjiGyfPvjfiSS0pj1ZAy4yyEMEx0c64H3eA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListOrderLambdaFunction"
               },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
+              "CodeSha256": "cOQa5rCQeJ17kuCFRmwJhlBcQaM0nLn9rV2BMfP8HL8=",
               "Description": "List Orders"
-            }
-          },
-          "GetProductLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
-              },
-              "FunctionName": "lightscm-dev-getProduct",
-              "Handler": "services/orders/products.get",
-              "MemorySize": 128,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              },
-              "Runtime": "nodejs12.x",
-              "Timeout": 6,
-              "Description": "Get Product by ID",
-              "Environment": {
-                "Variables": {
-                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-                  "PRODUCTS_TABLE": "products-dev",
-                  "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev",
-                  "ITEMS_TABLE": "items-dev"
-                }
-              }
-            },
-            "DependsOn": [
-              "GetProductLogGroup",
-              "IamRoleLambdaExecution"
-            ]
-          },
-          "GetProductLambdaVersionip3R8gVDjVqOBRXaschNkWmwyWzp3VzIZO22842RMho": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetProductLambdaFunction"
-              },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
-              "Description": "Get Product by ID"
-            }
-          },
-          "GetSectorLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
-              },
-              "FunctionName": "lightscm-dev-getSector",
-              "Handler": "services/sectors/sectors.get",
-              "MemorySize": 128,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              },
-              "Runtime": "nodejs12.x",
-              "Timeout": 6,
-              "Description": "Get Product by ID",
-              "Environment": {
-                "Variables": {
-                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-                  "PRODUCTS_TABLE": "products-dev",
-                  "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev",
-                  "ITEMS_TABLE": "items-dev"
-                }
-              }
-            },
-            "DependsOn": [
-              "GetSectorLogGroup",
-              "IamRoleLambdaExecution"
-            ]
-          },
-          "GetSectorLambdaVersion2pHsCUu6Nr1bg3ZUeSmmlAJ6IFayBY3gOqkM0kjAK8": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetSectorLambdaFunction"
-              },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
-              "Description": "Get Product by ID"
-            }
-          },
-          "ListSectorsLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
-              },
-              "FunctionName": "lightscm-dev-listSectors",
-              "Handler": "services/sectors/sectors.list",
-              "MemorySize": 128,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              },
-              "Runtime": "nodejs12.x",
-              "Timeout": 6,
-              "Description": "Get Product by ID",
-              "Environment": {
-                "Variables": {
-                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-                  "PRODUCTS_TABLE": "products-dev",
-                  "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev",
-                  "ITEMS_TABLE": "items-dev"
-                }
-              }
-            },
-            "DependsOn": [
-              "ListSectorsLogGroup",
-              "IamRoleLambdaExecution"
-            ]
-          },
-          "ListSectorsLambdaVersionJLs6Wyo9j1LYVno0WlCyX5P634fT1V8D254G184YJ0": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "ListSectorsLambdaFunction"
-              },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
-              "Description": "Get Product by ID"
-            }
-          },
-          "CreateDepartmentLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
-              },
-              "FunctionName": "lightscm-dev-createDepartment",
-              "Handler": "services/department/department.create",
-              "MemorySize": 1024,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              },
-              "Runtime": "nodejs12.x",
-              "Timeout": 6,
-              "Description": "Create a new Department",
-              "Environment": {
-                "Variables": {
-                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-                  "PRODUCTS_TABLE": "products-dev",
-                  "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev",
-                  "ITEMS_TABLE": "items-dev"
-                }
-              }
-            },
-            "DependsOn": [
-              "CreateDepartmentLogGroup",
-              "IamRoleLambdaExecution"
-            ]
-          },
-          "CreateDepartmentLambdaVersionKSx875KLDQqVbxzSG4oadtXwpIAnXbKmX2qYK7GnU": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "CreateDepartmentLambdaFunction"
-              },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
-              "Description": "Create a new Department"
-            }
-          },
-          "GetDepartmentLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
-              },
-              "FunctionName": "lightscm-dev-getDepartment",
-              "Handler": "services/department/department.get",
-              "MemorySize": 1024,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              },
-              "Runtime": "nodejs12.x",
-              "Timeout": 6,
-              "Description": "Get an Department by ID",
-              "Environment": {
-                "Variables": {
-                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-                  "PRODUCTS_TABLE": "products-dev",
-                  "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev",
-                  "ITEMS_TABLE": "items-dev"
-                }
-              }
-            },
-            "DependsOn": [
-              "GetDepartmentLogGroup",
-              "IamRoleLambdaExecution"
-            ]
-          },
-          "GetDepartmentLambdaVersionWDkU68FjZdHiyiFGIqEwPbIBRVRSZdwUONL1PISBy0w": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "GetDepartmentLambdaFunction"
-              },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
-              "Description": "Get an Department by ID"
-            }
-          },
-          "ListDepartmentLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
-              },
-              "FunctionName": "lightscm-dev-listDepartment",
-              "Handler": "services/department/department.list",
-              "MemorySize": 1024,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              },
-              "Runtime": "nodejs12.x",
-              "Timeout": 6,
-              "Description": "List Departments",
-              "Environment": {
-                "Variables": {
-                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
-                  "PRODUCTS_TABLE": "products-dev",
-                  "ORDERS_TABLE": "orders-dev",
-                  "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev",
-                  "ITEMS_TABLE": "items-dev"
-                }
-              }
-            },
-            "DependsOn": [
-              "ListDepartmentLogGroup",
-              "IamRoleLambdaExecution"
-            ]
-          },
-          "ListDepartmentLambdaVersionqhl1dbFUHShZhtqGehUiYtf0ULSWEC8SbnstzR1Rs": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "ListDepartmentLambdaFunction"
-              },
-              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
-              "Description": "List Departments"
             }
           },
           "ApiGatewayRestApi": {
@@ -748,87 +424,6 @@
             "Properties": {
               "ParentId": {
                 "Ref": "ApiGatewayResourceOrders"
-              },
-              "PathPart": "{id}",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceProducts": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Fn::GetAtt": [
-                  "ApiGatewayRestApi",
-                  "RootResourceId"
-                ]
-              },
-              "PathPart": "products",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceProductsIdVar": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Ref": "ApiGatewayResourceProducts"
-              },
-              "PathPart": "{id}",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceSectors": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Fn::GetAtt": [
-                  "ApiGatewayRestApi",
-                  "RootResourceId"
-                ]
-              },
-              "PathPart": "sectors",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceSectorsIdVar": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Ref": "ApiGatewayResourceSectors"
-              },
-              "PathPart": "{id}",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceDepartments": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Fn::GetAtt": [
-                  "ApiGatewayRestApi",
-                  "RootResourceId"
-                ]
-              },
-              "PathPart": "departments",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceDepartmentsIdVar": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Ref": "ApiGatewayResourceDepartments"
               },
               "PathPart": "{id}",
               "RestApiId": {
@@ -920,231 +515,6 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceOrdersIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodProductsIdVarOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceProductsIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodSectorsIdVarOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSectorsIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodSectorsOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSectors"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodDepartmentsOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceDepartments"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodDepartmentsIdVarOptions": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "AuthorizationType": "NONE",
-              "HttpMethod": "OPTIONS",
-              "MethodResponses": [
-                {
-                  "StatusCode": "200",
-                  "ResponseParameters": {
-                    "method.response.header.Access-Control-Allow-Origin": true,
-                    "method.response.header.Access-Control-Allow-Headers": true,
-                    "method.response.header.Access-Control-Allow-Methods": true
-                  },
-                  "ResponseModels": {}
-                }
-              ],
-              "RequestParameters": {},
-              "Integration": {
-                "Type": "MOCK",
-                "RequestTemplates": {
-                  "application/json": "{statusCode:200}"
-                },
-                "ContentHandling": "CONVERT_TO_TEXT",
-                "IntegrationResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
-                    },
-                    "ResponseTemplates": {
-                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
-                    }
-                  }
-                ]
-              },
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceDepartmentsIdVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -1323,265 +693,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayMethodProductsIdVarGet": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "GET",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceProductsIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "GetProductLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            }
-          },
-          "ApiGatewayMethodSectorsIdVarGet": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "GET",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSectorsIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "GetSectorLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            }
-          },
-          "ApiGatewayMethodSectorsGet": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "GET",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceSectors"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "ListSectorsLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            }
-          },
-          "ApiGatewayMethodDepartmentsPost": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "POST",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceDepartments"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "CreateDepartmentLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            }
-          },
-          "ApiGatewayMethodDepartmentsIdVarGet": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "GET",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceDepartmentsIdVar"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "GetDepartmentLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            }
-          },
-          "ApiGatewayMethodDepartmentsGet": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "GET",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceDepartments"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "ApiKeyRequired": false,
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "ListDepartmentLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            }
-          },
-          "ApiGatewayDeployment1605579942159": {
+          "ApiGatewayDeployment1616344814335": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1592,21 +704,10 @@
             "DependsOn": [
               "ApiGatewayMethodOrdersOptions",
               "ApiGatewayMethodOrdersIdVarOptions",
-              "ApiGatewayMethodProductsIdVarOptions",
-              "ApiGatewayMethodSectorsIdVarOptions",
-              "ApiGatewayMethodSectorsOptions",
-              "ApiGatewayMethodDepartmentsOptions",
-              "ApiGatewayMethodDepartmentsIdVarOptions",
               "ApiGatewayMethodOrdersPost",
               "ApiGatewayMethodOrdersIdVarPut",
               "ApiGatewayMethodOrdersIdVarGet",
-              "ApiGatewayMethodOrdersGet",
-              "ApiGatewayMethodProductsIdVarGet",
-              "ApiGatewayMethodSectorsIdVarGet",
-              "ApiGatewayMethodSectorsGet",
-              "ApiGatewayMethodDepartmentsPost",
-              "ApiGatewayMethodDepartmentsIdVarGet",
-              "ApiGatewayMethodDepartmentsGet"
+              "ApiGatewayMethodOrdersGet"
             ]
           },
           "CreateOrderLambdaPermissionApiGateway": {
@@ -1726,228 +827,6 @@
               "FunctionName": {
                 "Fn::GetAtt": [
                   "ListOrderLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "GetProductLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "GetProductLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "GetSectorLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "GetSectorLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "ListSectorsLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "ListSectorsLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "CreateDepartmentLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "CreateDepartmentLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "GetDepartmentLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "GetDepartmentLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "ListDepartmentLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "ListDepartmentLambdaFunction",
                   "Arn"
                 ]
               },
@@ -2119,61 +998,25 @@
           "CreateOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateOrderLambdaVersionx2lr1t50SJNJmR7hanfScFZcZ0i9wOnFPOzzPdq3io"
+              "Ref": "CreateOrderLambdaVersionq0rRbCNDKweNng8L3v6jeJALRXApKTxZqxIEVCB6GQ"
             }
           },
           "UpdateOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateOrderLambdaVersionpwAWdxQNP3D2tPb2zGeFeQYeSyDJFWHtXHAFkJjS2s"
+              "Ref": "UpdateOrderLambdaVersionP1vuDJwrHv5ancXrqpKsHDZU9Bj0oEOQWEUOKwa98"
             }
           },
           "GetOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetOrderLambdaVersionBvmzVzJdrTKYGTXhQYwae22U8XN7UxsODoDwwHcjA"
+              "Ref": "GetOrderLambdaVersioneC17a48o2KXVXvOKalMNtGWVTPMu7nssXEAwKpcSk"
             }
           },
           "ListOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListOrderLambdaVersionQ33tOzEWOQmCeDEzyCM9zSzE635IKfzII2JJIuqcj1U"
-            }
-          },
-          "GetProductLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetProductLambdaVersionip3R8gVDjVqOBRXaschNkWmwyWzp3VzIZO22842RMho"
-            }
-          },
-          "GetSectorLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetSectorLambdaVersion2pHsCUu6Nr1bg3ZUeSmmlAJ6IFayBY3gOqkM0kjAK8"
-            }
-          },
-          "ListSectorsLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "ListSectorsLambdaVersionJLs6Wyo9j1LYVno0WlCyX5P634fT1V8D254G184YJ0"
-            }
-          },
-          "CreateDepartmentLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "CreateDepartmentLambdaVersionKSx875KLDQqVbxzSG4oadtXwpIAnXbKmX2qYK7GnU"
-            }
-          },
-          "GetDepartmentLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetDepartmentLambdaVersionWDkU68FjZdHiyiFGIqEwPbIBRVRSZdwUONL1PISBy0w"
-            }
-          },
-          "ListDepartmentLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "ListDepartmentLambdaVersionqhl1dbFUHShZhtqGehUiYtf0ULSWEC8SbnstzR1Rs"
+              "Ref": "ListOrderLambdaVersionUf7G0DerjiGyfPvjfiSS0pj1ZAy4yyEMEx0c64H3eA"
             }
           },
           "ServiceEndpoint": {
@@ -2282,7 +1125,7 @@
     "pluginsData": {},
     "functions": {
       "createOrder": {
-        "handler": "services/orders/orders.create",
+        "handler": "./src/app/handler.createOrder",
         "description": "Create a new Order",
         "events": [
           {
@@ -2320,10 +1163,10 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "CreateOrderLambdaVersionx2lr1t50SJNJmR7hanfScFZcZ0i9wOnFPOzzPdq3io"
+        "versionLogicalId": "CreateOrderLambdaVersionq0rRbCNDKweNng8L3v6jeJALRXApKTxZqxIEVCB6GQ"
       },
       "updateOrder": {
-        "handler": "services/orders/orders.update",
+        "handler": "./src/app/handler.updateOrder",
         "description": "Update a Order",
         "events": [
           {
@@ -2361,10 +1204,10 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "UpdateOrderLambdaVersionpwAWdxQNP3D2tPb2zGeFeQYeSyDJFWHtXHAFkJjS2s"
+        "versionLogicalId": "UpdateOrderLambdaVersionP1vuDJwrHv5ancXrqpKsHDZU9Bj0oEOQWEUOKwa98"
       },
       "getOrder": {
-        "handler": "services/orders/orders.get",
+        "handler": "./src/app/handler.getOrder",
         "description": "Get an Order by ID",
         "events": [
           {
@@ -2402,10 +1245,10 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetOrderLambdaVersionBvmzVzJdrTKYGTXhQYwae22U8XN7UxsODoDwwHcjA"
+        "versionLogicalId": "GetOrderLambdaVersioneC17a48o2KXVXvOKalMNtGWVTPMu7nssXEAwKpcSk"
       },
       "listOrder": {
-        "handler": "services/orders/orders.list",
+        "handler": "./src/app/handler.listOrder",
         "description": "List Orders",
         "events": [
           {
@@ -2443,256 +1286,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "ListOrderLambdaVersionQ33tOzEWOQmCeDEzyCM9zSzE635IKfzII2JJIuqcj1U"
-      },
-      "getProduct": {
-        "handler": "services/orders/products.get",
-        "memorySize": 128,
-        "description": "Get Product by ID",
-        "events": [
-          {
-            "http": {
-              "method": "get",
-              "path": "products/{id}",
-              "cors": {
-                "origins": [
-                  "*"
-                ],
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "lightscm-dev-getProduct",
-        "package": {
-          "artifact": ".serverless/lightscm.zip"
-        },
-        "memory": 128,
-        "timeout": 6,
-        "runtime": "nodejs12.x",
-        "vpc": {},
-        "versionLogicalId": "GetProductLambdaVersionip3R8gVDjVqOBRXaschNkWmwyWzp3VzIZO22842RMho"
-      },
-      "getSector": {
-        "handler": "services/sectors/sectors.get",
-        "memorySize": 128,
-        "description": "Get Product by ID",
-        "events": [
-          {
-            "http": {
-              "method": "get",
-              "path": "sectors/{id}",
-              "cors": {
-                "origins": [
-                  "*"
-                ],
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "lightscm-dev-getSector",
-        "package": {
-          "artifact": ".serverless/lightscm.zip"
-        },
-        "memory": 128,
-        "timeout": 6,
-        "runtime": "nodejs12.x",
-        "vpc": {},
-        "versionLogicalId": "GetSectorLambdaVersion2pHsCUu6Nr1bg3ZUeSmmlAJ6IFayBY3gOqkM0kjAK8"
-      },
-      "listSectors": {
-        "handler": "services/sectors/sectors.list",
-        "memorySize": 128,
-        "description": "Get Product by ID",
-        "events": [
-          {
-            "http": {
-              "method": "get",
-              "path": "sectors",
-              "cors": {
-                "origins": [
-                  "*"
-                ],
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "lightscm-dev-listSectors",
-        "package": {
-          "artifact": ".serverless/lightscm.zip"
-        },
-        "memory": 128,
-        "timeout": 6,
-        "runtime": "nodejs12.x",
-        "vpc": {},
-        "versionLogicalId": "ListSectorsLambdaVersionJLs6Wyo9j1LYVno0WlCyX5P634fT1V8D254G184YJ0"
-      },
-      "createDepartment": {
-        "handler": "services/department/department.create",
-        "description": "Create a new Department",
-        "events": [
-          {
-            "http": {
-              "method": "post",
-              "path": "departments",
-              "cors": {
-                "origins": [
-                  "*"
-                ],
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "POST"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "lightscm-dev-createDepartment",
-        "package": {
-          "artifact": ".serverless/lightscm.zip"
-        },
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs12.x",
-        "vpc": {},
-        "versionLogicalId": "CreateDepartmentLambdaVersionKSx875KLDQqVbxzSG4oadtXwpIAnXbKmX2qYK7GnU"
-      },
-      "getDepartment": {
-        "handler": "services/department/department.get",
-        "description": "Get an Department by ID",
-        "events": [
-          {
-            "http": {
-              "method": "get",
-              "path": "departments/{id}",
-              "cors": {
-                "origins": [
-                  "*"
-                ],
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "lightscm-dev-getDepartment",
-        "package": {
-          "artifact": ".serverless/lightscm.zip"
-        },
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs12.x",
-        "vpc": {},
-        "versionLogicalId": "GetDepartmentLambdaVersionWDkU68FjZdHiyiFGIqEwPbIBRVRSZdwUONL1PISBy0w"
-      },
-      "listDepartment": {
-        "handler": "services/department/department.list",
-        "description": "List Departments",
-        "events": [
-          {
-            "http": {
-              "method": "get",
-              "path": "departments",
-              "cors": {
-                "origins": [
-                  "*"
-                ],
-                "origin": "*",
-                "methods": [
-                  "OPTIONS",
-                  "GET"
-                ],
-                "headers": [
-                  "Content-Type",
-                  "X-Amz-Date",
-                  "Authorization",
-                  "X-Api-Key",
-                  "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
-                ],
-                "allowCredentials": false
-              },
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "lightscm-dev-listDepartment",
-        "package": {
-          "artifact": ".serverless/lightscm.zip"
-        },
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs12.x",
-        "vpc": {},
-        "versionLogicalId": "ListDepartmentLambdaVersionqhl1dbFUHShZhtqGehUiYtf0ULSWEC8SbnstzR1Rs"
+        "versionLogicalId": "ListOrderLambdaVersionUf7G0DerjiGyfPvjfiSS0pj1ZAy4yyEMEx0c64H3eA"
       }
     },
     "resources": {
@@ -2835,7 +1429,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z",
+    "artifactDirectoryName": "serverless/lightscm/dev/1616344823209-2021-03-21T16:40:23.209Z",
     "artifact": ""
   }
 }

@@ -133,7 +133,7 @@ resources:
 
 functions:
   createOrder:
-    handler: services/orders/orders.create
+    handler: ./src/app/handler.createOrder
     description: Create a new Order
     events:
       - http:
@@ -141,7 +141,7 @@ functions:
           path: orders
           cors: true
   updateOrder:
-    handler: services/orders/orders.update
+    handler: ./src/app/handler.updateOrder
     description: Update a Order
     events:
       - http:
@@ -149,7 +149,7 @@ functions:
           path: orders/{id}
           cors: true
   getOrder:
-    handler: services/orders/orders.get
+    handler: ./src/app/handler.getOrder
     description: Get an Order by ID
     events:
       - http:
@@ -157,61 +157,10 @@ functions:
           path: orders/{id}
           cors: true
   listOrder:
-    handler: services/orders/orders.list
+    handler: ./src/app/handler.listOrder
     description: List Orders
     events:
       - http:
           method: get
           path: orders
-          cors: true
-  getProduct:
-    handler: services/orders/products.get
-    memorySize: 128
-    description: Get Product by ID
-    events:
-      - http:
-          method: get
-          path: products/{id}
-          cors: true
-  getSector:
-    handler: services/sectors/sectors.get
-    memorySize: 128
-    description: Get Product by ID
-    events:
-      - http:
-          method: get
-          path: sectors/{id}
-          cors: true
-  listSectors:
-    handler: services/sectors/sectors.list
-    memorySize: 128
-    description: Get Product by ID
-    events:
-      - http:
-          method: get
-          path: sectors
-          cors: true
-  createDepartment:
-    handler: services/department/department.create
-    description: Create a new Department
-    events:
-      - http:
-          method: post
-          path: departments
-          cors: true
-  getDepartment:
-    handler: services/department/department.get
-    description: Get an Department by ID
-    events:
-      - http:
-          method: get
-          path: departments/{id}
-          cors: true
-  listDepartment:
-    handler: services/department/department.list
-    description: List Departments
-    events:
-      - http:
-          method: get
-          path: departments
           cors: true
