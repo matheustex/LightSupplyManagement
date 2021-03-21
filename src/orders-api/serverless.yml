@@ -4,12 +4,7 @@ service:
 #app: your-app-name
 #org: your-org-name
 
-custom:
-  ${file(../../../serverless.common.yml):custom}
-  # webpack:
-  #   webpackConfig: webpack.config.js
-  #   includeModules: true
-  # stage: ${file(../../serverless.common.yml):custom.stage}
+custom: ${file(../../serverless.common.yml):custom}
 
 # Add the serverless-webpack plugin
 plugins:

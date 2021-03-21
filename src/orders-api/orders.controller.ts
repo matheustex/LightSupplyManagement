@@ -1,5 +1,5 @@
 import { MessageUtil } from '../../utils/message';
-import { OrdersService } from '../../service/orders/orders';
+import { OrdersService } from './orders.service';
 import { Context } from 'aws-lambda';
 import { Order } from '../../model/order';
 
@@ -8,7 +8,7 @@ export class OrdersController extends OrdersService {
     super();
   }
 
-  async create (event: any, context?: Context) {
+  async save (event: any, context?: Context) {
     console.log('functionName', context.functionName);
     const params: Order = JSON.parse(event.body);
 
@@ -39,7 +39,7 @@ export class OrdersController extends OrdersService {
   async get (event: any) {
     try {
       const id: string = event.pathParameters.id;
-      const result = await this.getOrder(id);
+      const result = await this.get(id);
 
       return MessageUtil.success(result);
     } catch (err) {
@@ -49,7 +49,7 @@ export class OrdersController extends OrdersService {
     }
   }
 
-  async list () {
+  async findAll () {
     try {
       const result = await this.listOrders();
 

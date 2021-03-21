@@ -8,7 +8,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient({
 });
 
 export class DB {
-  create(table: string, req: any): Promise<any> {
+  save(table: string, req: any): Promise<any> {
     console.log('START CREATE REQUEST');
 
     let item = this.buildModel(req);
@@ -19,14 +19,9 @@ export class DB {
     };
 
     return dynamoDb.put(params).promise()
-      .then((data) => {
-        console.log('REQUEST SUCCESSED ', data);
+      .then(() => {
         return {
-          statusCode: 200,
-          headers: {
-            "Access-Control-Allow-Origin": "*" // Required for CORS support to work
-          },
-          body: JSON.stringify(item)
+          item
         }
       }).catch((err) => {
         console.log('Error:', err)
@@ -34,7 +29,7 @@ export class DB {
       })
   }
 
-  get(table: string, id: string): any {
+  findOne(table: string, id: string): any {
     const params = {
       TableName: table,
       Key: {
@@ -43,23 +38,16 @@ export class DB {
     };
 
     return dynamoDb.get(params).promise()
-      .then((data) => {
-        console.log(data);
-        return {
-          statusCode: 200,
-          headers: {
-            "Access-Control-Allow-Origin": "*" // Required for CORS support to work
-          },
-          body: JSON.stringify(data.Item)
-        }
+      .then(({Item}) => {
+        return Item;
       }).catch((err) => {
         console.log('Error:', err)
         return err;
       });
   }
 
-  list(table: string) {
-    let params = {
+  findAll(table: string) {
+    const params = {
       TableName: table
     };
 

@@ -1,4 +1,4 @@
-import { Order } from 'src/model/order';
+import { Order } from '../../model/order';
 import { DB } from '../../utils/db';
 
 
@@ -23,7 +23,7 @@ export class OrdersService {
       }
 
       const request = { ...params, status: 'PENDING', total: 0, quantity: 0};
-      const response = await this.db.create(this.table, request)
+      const response = await this.db.save(this.table, request)
 
       return response;
     } catch (err) {
@@ -51,7 +51,7 @@ export class OrdersService {
 
   protected async listOrders (): Promise<Order> {
     try {
-      const orders = await this.db.list(this.table)
+      const orders = await this.db.findAll(this.table)
       return orders;
     } catch (error) {
       console.error(error);
@@ -62,7 +62,7 @@ export class OrdersService {
 
   protected async getOrder (id: string): Promise<Order> {
     try {
-      const orderUpdated = await this.db.get(this.table, id)
+      const orderUpdated = await this.db.findOne(this.table, id)
       return orderUpdated;
     } catch (error) {
       console.error(error);
