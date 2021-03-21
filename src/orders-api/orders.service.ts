@@ -18,9 +18,13 @@ export class OrdersService {
     try {
       const { related, name } = params;
 
+      
+
       if (typeof related !== 'string' && typeof name !== 'string') {
         throw new Error('No related date found');
       }
+
+      console.log(this.table);
 
       const request = { ...params, status: 'PENDING', total: 0, quantity: 0};
       const response = await this.db.save(this.table, request)

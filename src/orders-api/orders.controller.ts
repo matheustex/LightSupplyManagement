@@ -9,7 +9,7 @@ export class OrdersController extends OrdersService {
   }
 
   async save (event: any, context?: Context) {
-    console.log('functionName', context.functionName);
+    console.log('functionName', context?.functionName);
     const params: Order = JSON.parse(event.body);
 
     try {

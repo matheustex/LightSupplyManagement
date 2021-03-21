@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import AWS from 'aws-sdk';
+import AWS from './aws';
 
 AWS.config.setPromisesDependency(require('bluebird'));
 
