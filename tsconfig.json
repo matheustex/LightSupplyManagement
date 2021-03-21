@@ -3,6 +3,13 @@
     "lib": [
       "es2017"
     ],
+    "baseUrl": ".",
+    "paths": {
+      "@controller/*": ["./src/app/controller/*"],
+      "@service/*": ["./src/app/service/*"],
+      "@utils/*":["./src/app/utils/*"],
+      "@model/*": ["./src/app/model/*"]
+    },
     "removeComments": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
@@ -13,7 +20,7 @@
   },
   "include": [
     "./**/*.ts",
-    "services/department"
+    "src/app/service/department"
   ],
   "exclude": [
     "node_modules/**/*",

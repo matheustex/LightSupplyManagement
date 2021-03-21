@@ -18,7 +18,8 @@
         "PRODUCTS_TABLE": "products-dev",
         "ORDERS_TABLE": "orders-dev",
         "SECTORS_TABLE": "sectors-dev",
-        "DEPARTMENTS_TABLE": "departments-dev"
+        "DEPARTMENTS_TABLE": "departments-dev",
+        "ITEMS_TABLE": "items-dev"
       },
       "iamRoleStatements": [
         {
@@ -98,6 +99,12 @@
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
               "LogGroupName": "/aws/lambda/lightscm-dev-createOrder"
+            }
+          },
+          "UpdateOrderLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/lightscm-dev-updateOrder"
             }
           },
           "GetOrderLogGroup": {
@@ -235,7 +242,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-createOrder",
               "Handler": "services/orders/orders.create",
@@ -255,7 +262,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -264,15 +272,63 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateOrderLambdaVersionEWzu71Ih45OFzviwCUXREBePmWwfakBtAAeJWoEky8": {
+          "CreateOrderLambdaVersionx2lr1t50SJNJmR7hanfScFZcZ0i9wOnFPOzzPdq3io": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateOrderLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "Create a new Order"
+            }
+          },
+          "UpdateOrderLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
+              },
+              "FunctionName": "lightscm-dev-updateOrder",
+              "Handler": "services/orders/orders.update",
+              "MemorySize": 1024,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Runtime": "nodejs12.x",
+              "Timeout": 6,
+              "Description": "Update a Order",
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": 1,
+                  "PRODUCTS_TABLE": "products-dev",
+                  "ORDERS_TABLE": "orders-dev",
+                  "SECTORS_TABLE": "sectors-dev",
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
+                }
+              }
+            },
+            "DependsOn": [
+              "UpdateOrderLogGroup",
+              "IamRoleLambdaExecution"
+            ]
+          },
+          "UpdateOrderLambdaVersionpwAWdxQNP3D2tPb2zGeFeQYeSyDJFWHtXHAFkJjS2s": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UpdateOrderLambdaFunction"
+              },
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
+              "Description": "Update a Order"
             }
           },
           "GetOrderLambdaFunction": {
@@ -282,7 +338,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getOrder",
               "Handler": "services/orders/orders.get",
@@ -302,7 +358,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -311,14 +368,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetOrderLambdaVersiontqMCkRoOR0prUkVYd5np3P4Z6TCkut2uEiq2TMyZY": {
+          "GetOrderLambdaVersionBvmzVzJdrTKYGTXhQYwae22U8XN7UxsODoDwwHcjA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetOrderLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "Get an Order by ID"
             }
           },
@@ -329,7 +386,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listOrder",
               "Handler": "services/orders/orders.list",
@@ -349,7 +406,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -358,14 +416,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ListOrderLambdaVersionqGYQWLFThVKJFYB1dHAv7Mp6h0NOfucG9anCNpJoI": {
+          "ListOrderLambdaVersionQ33tOzEWOQmCeDEzyCM9zSzE635IKfzII2JJIuqcj1U": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListOrderLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "List Orders"
             }
           },
@@ -376,7 +434,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getProduct",
               "Handler": "services/orders/products.get",
@@ -396,7 +454,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -405,14 +464,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetProductLambdaVersioncHnEgFsNWq3ptoOLjqvDulsVoS7z8SSSenGKs5I": {
+          "GetProductLambdaVersionip3R8gVDjVqOBRXaschNkWmwyWzp3VzIZO22842RMho": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetProductLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "Get Product by ID"
             }
           },
@@ -423,7 +482,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getSector",
               "Handler": "services/sectors/sectors.get",
@@ -443,7 +502,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -452,14 +512,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetSectorLambdaVersionDOuyEDEgtqwMXhkxsPvpGIGHidDq0qEhtDUYYWb8": {
+          "GetSectorLambdaVersion2pHsCUu6Nr1bg3ZUeSmmlAJ6IFayBY3gOqkM0kjAK8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetSectorLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "Get Product by ID"
             }
           },
@@ -470,7 +530,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listSectors",
               "Handler": "services/sectors/sectors.list",
@@ -490,7 +550,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -499,14 +560,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ListSectorsLambdaVersionmlAI8BpQjx257tnSmopt5bk09f6ur0p3I9hinN6H5fw": {
+          "ListSectorsLambdaVersionJLs6Wyo9j1LYVno0WlCyX5P634fT1V8D254G184YJ0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListSectorsLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "Get Product by ID"
             }
           },
@@ -517,7 +578,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-createDepartment",
               "Handler": "services/department/department.create",
@@ -537,7 +598,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -546,14 +608,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateDepartmentLambdaVersion1CIc0GOLhcwEq84cvl5t0eHKUktShDw2iuPWzF9Wo0": {
+          "CreateDepartmentLambdaVersionKSx875KLDQqVbxzSG4oadtXwpIAnXbKmX2qYK7GnU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateDepartmentLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "Create a new Department"
             }
           },
@@ -564,7 +626,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-getDepartment",
               "Handler": "services/department/department.get",
@@ -584,7 +646,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -593,14 +656,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetDepartmentLambdaVersionZ6CHf6wX4K4r3JlOMeTJrg55NvXqruPESySdW4oU": {
+          "GetDepartmentLambdaVersionWDkU68FjZdHiyiFGIqEwPbIBRVRSZdwUONL1PISBy0w": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetDepartmentLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "Get an Department by ID"
             }
           },
@@ -611,7 +674,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z/lightscm.zip"
+                "S3Key": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z/lightscm.zip"
               },
               "FunctionName": "lightscm-dev-listDepartment",
               "Handler": "services/department/department.list",
@@ -631,7 +694,8 @@
                   "PRODUCTS_TABLE": "products-dev",
                   "ORDERS_TABLE": "orders-dev",
                   "SECTORS_TABLE": "sectors-dev",
-                  "DEPARTMENTS_TABLE": "departments-dev"
+                  "DEPARTMENTS_TABLE": "departments-dev",
+                  "ITEMS_TABLE": "items-dev"
                 }
               }
             },
@@ -640,14 +704,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ListDepartmentLambdaVersion5A8GmcqXT9iEly42skjuYsCfURyOXct1JjlrAunZ3M": {
+          "ListDepartmentLambdaVersionqhl1dbFUHShZhtqGehUiYtf0ULSWEC8SbnstzR1Rs": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListDepartmentLambdaFunction"
               },
-              "CodeSha256": "dxBC8Y8n35uqNS46Q8ikr4KxqvK/wqv4uysOI0CLgY0=",
+              "CodeSha256": "p0S+obtSvhpL6j9vMqeFyV2UZkP2CHm4fByMC6grmEE=",
               "Description": "List Departments"
             }
           },
@@ -846,7 +910,7 @@
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
                       "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT'"
                     },
                     "ResponseTemplates": {
                       "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
@@ -1119,6 +1183,49 @@
                       {
                         "Fn::GetAtt": [
                           "CreateOrderLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayMethodOrdersIdVarPut": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "PUT",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceOrdersIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "UpdateOrderLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -1474,7 +1581,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1605315772707": {
+          "ApiGatewayDeployment1605579942159": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1491,6 +1598,7 @@
               "ApiGatewayMethodDepartmentsOptions",
               "ApiGatewayMethodDepartmentsIdVarOptions",
               "ApiGatewayMethodOrdersPost",
+              "ApiGatewayMethodOrdersIdVarPut",
               "ApiGatewayMethodOrdersIdVarGet",
               "ApiGatewayMethodOrdersGet",
               "ApiGatewayMethodProductsIdVarGet",
@@ -1507,6 +1615,43 @@
               "FunctionName": {
                 "Fn::GetAtt": [
                   "CreateOrderLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "UpdateOrderLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "UpdateOrderLambdaFunction",
                   "Arn"
                 ]
               },
@@ -1937,6 +2082,32 @@
               },
               "TableName": "departments-dev"
             }
+          },
+          "ItemDynamoDbTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ],
+              "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+              },
+              "StreamSpecification": {
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+              },
+              "TableName": "items-dev"
+            }
           }
         },
         "Outputs": {
@@ -1948,55 +2119,61 @@
           "CreateOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateOrderLambdaVersionEWzu71Ih45OFzviwCUXREBePmWwfakBtAAeJWoEky8"
+              "Ref": "CreateOrderLambdaVersionx2lr1t50SJNJmR7hanfScFZcZ0i9wOnFPOzzPdq3io"
+            }
+          },
+          "UpdateOrderLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "UpdateOrderLambdaVersionpwAWdxQNP3D2tPb2zGeFeQYeSyDJFWHtXHAFkJjS2s"
             }
           },
           "GetOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetOrderLambdaVersiontqMCkRoOR0prUkVYd5np3P4Z6TCkut2uEiq2TMyZY"
+              "Ref": "GetOrderLambdaVersionBvmzVzJdrTKYGTXhQYwae22U8XN7UxsODoDwwHcjA"
             }
           },
           "ListOrderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListOrderLambdaVersionqGYQWLFThVKJFYB1dHAv7Mp6h0NOfucG9anCNpJoI"
+              "Ref": "ListOrderLambdaVersionQ33tOzEWOQmCeDEzyCM9zSzE635IKfzII2JJIuqcj1U"
             }
           },
           "GetProductLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetProductLambdaVersioncHnEgFsNWq3ptoOLjqvDulsVoS7z8SSSenGKs5I"
+              "Ref": "GetProductLambdaVersionip3R8gVDjVqOBRXaschNkWmwyWzp3VzIZO22842RMho"
             }
           },
           "GetSectorLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetSectorLambdaVersionDOuyEDEgtqwMXhkxsPvpGIGHidDq0qEhtDUYYWb8"
+              "Ref": "GetSectorLambdaVersion2pHsCUu6Nr1bg3ZUeSmmlAJ6IFayBY3gOqkM0kjAK8"
             }
           },
           "ListSectorsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListSectorsLambdaVersionmlAI8BpQjx257tnSmopt5bk09f6ur0p3I9hinN6H5fw"
+              "Ref": "ListSectorsLambdaVersionJLs6Wyo9j1LYVno0WlCyX5P634fT1V8D254G184YJ0"
             }
           },
           "CreateDepartmentLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateDepartmentLambdaVersion1CIc0GOLhcwEq84cvl5t0eHKUktShDw2iuPWzF9Wo0"
+              "Ref": "CreateDepartmentLambdaVersionKSx875KLDQqVbxzSG4oadtXwpIAnXbKmX2qYK7GnU"
             }
           },
           "GetDepartmentLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetDepartmentLambdaVersionZ6CHf6wX4K4r3JlOMeTJrg55NvXqruPESySdW4oU"
+              "Ref": "GetDepartmentLambdaVersionWDkU68FjZdHiyiFGIqEwPbIBRVRSZdwUONL1PISBy0w"
             }
           },
           "ListDepartmentLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListDepartmentLambdaVersion5A8GmcqXT9iEly42skjuYsCfURyOXct1JjlrAunZ3M"
+              "Ref": "ListDepartmentLambdaVersionqhl1dbFUHShZhtqGehUiYtf0ULSWEC8SbnstzR1Rs"
             }
           },
           "ServiceEndpoint": {
@@ -2143,7 +2320,48 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "CreateOrderLambdaVersionEWzu71Ih45OFzviwCUXREBePmWwfakBtAAeJWoEky8"
+        "versionLogicalId": "CreateOrderLambdaVersionx2lr1t50SJNJmR7hanfScFZcZ0i9wOnFPOzzPdq3io"
+      },
+      "updateOrder": {
+        "handler": "services/orders/orders.update",
+        "description": "Update a Order",
+        "events": [
+          {
+            "http": {
+              "method": "put",
+              "path": "orders/{id}",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "PUT"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "lightscm-dev-updateOrder",
+        "package": {
+          "artifact": ".serverless/lightscm.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs12.x",
+        "vpc": {},
+        "versionLogicalId": "UpdateOrderLambdaVersionpwAWdxQNP3D2tPb2zGeFeQYeSyDJFWHtXHAFkJjS2s"
       },
       "getOrder": {
         "handler": "services/orders/orders.get",
@@ -2184,7 +2402,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetOrderLambdaVersiontqMCkRoOR0prUkVYd5np3P4Z6TCkut2uEiq2TMyZY"
+        "versionLogicalId": "GetOrderLambdaVersionBvmzVzJdrTKYGTXhQYwae22U8XN7UxsODoDwwHcjA"
       },
       "listOrder": {
         "handler": "services/orders/orders.list",
@@ -2225,7 +2443,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "ListOrderLambdaVersionqGYQWLFThVKJFYB1dHAv7Mp6h0NOfucG9anCNpJoI"
+        "versionLogicalId": "ListOrderLambdaVersionQ33tOzEWOQmCeDEzyCM9zSzE635IKfzII2JJIuqcj1U"
       },
       "getProduct": {
         "handler": "services/orders/products.get",
@@ -2267,7 +2485,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetProductLambdaVersioncHnEgFsNWq3ptoOLjqvDulsVoS7z8SSSenGKs5I"
+        "versionLogicalId": "GetProductLambdaVersionip3R8gVDjVqOBRXaschNkWmwyWzp3VzIZO22842RMho"
       },
       "getSector": {
         "handler": "services/sectors/sectors.get",
@@ -2309,7 +2527,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetSectorLambdaVersionDOuyEDEgtqwMXhkxsPvpGIGHidDq0qEhtDUYYWb8"
+        "versionLogicalId": "GetSectorLambdaVersion2pHsCUu6Nr1bg3ZUeSmmlAJ6IFayBY3gOqkM0kjAK8"
       },
       "listSectors": {
         "handler": "services/sectors/sectors.list",
@@ -2351,7 +2569,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "ListSectorsLambdaVersionmlAI8BpQjx257tnSmopt5bk09f6ur0p3I9hinN6H5fw"
+        "versionLogicalId": "ListSectorsLambdaVersionJLs6Wyo9j1LYVno0WlCyX5P634fT1V8D254G184YJ0"
       },
       "createDepartment": {
         "handler": "services/department/department.create",
@@ -2392,7 +2610,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "CreateDepartmentLambdaVersion1CIc0GOLhcwEq84cvl5t0eHKUktShDw2iuPWzF9Wo0"
+        "versionLogicalId": "CreateDepartmentLambdaVersionKSx875KLDQqVbxzSG4oadtXwpIAnXbKmX2qYK7GnU"
       },
       "getDepartment": {
         "handler": "services/department/department.get",
@@ -2433,7 +2651,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "GetDepartmentLambdaVersionZ6CHf6wX4K4r3JlOMeTJrg55NvXqruPESySdW4oU"
+        "versionLogicalId": "GetDepartmentLambdaVersionWDkU68FjZdHiyiFGIqEwPbIBRVRSZdwUONL1PISBy0w"
       },
       "listDepartment": {
         "handler": "services/department/department.list",
@@ -2474,7 +2692,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "ListDepartmentLambdaVersion5A8GmcqXT9iEly42skjuYsCfURyOXct1JjlrAunZ3M"
+        "versionLogicalId": "ListDepartmentLambdaVersionqhl1dbFUHShZhtqGehUiYtf0ULSWEC8SbnstzR1Rs"
       }
     },
     "resources": {
@@ -2582,6 +2800,32 @@
             },
             "TableName": "departments-dev"
           }
+        },
+        "ItemDynamoDbTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "DeletionPolicy": "Retain",
+          "Properties": {
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "id",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "id",
+                "KeyType": "HASH"
+              }
+            ],
+            "ProvisionedThroughput": {
+              "ReadCapacityUnits": 1,
+              "WriteCapacityUnits": 1
+            },
+            "StreamSpecification": {
+              "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "TableName": "items-dev"
+          }
         }
       },
       "Outputs": {}
@@ -2591,7 +2835,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/lightscm/dev/1605315781896-2020-11-14T01:03:01.896Z",
+    "artifactDirectoryName": "serverless/lightscm/dev/1605579950614-2020-11-17T02:25:50.614Z",
     "artifact": ""
   }
 }

@@ -1,7 +1,6 @@
-import { Item } from './../../dap/item';
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
-import { DB } from '../../shared/db';
+import { DB } from '@utils/db';
 
 const db: DB = new DB();
 
