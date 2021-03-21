@@ -1,0 +1,88 @@
+service:
+  name: lightscm-orders-api
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+  stage: ${file(../../serverless.common.yml):custom.stage}
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-2
+  apiGateway:
+    minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+
+functions:
+  createOrder:
+    handler: handler.createOrder
+    description: Create a new Order
+    events:
+      - http:
+          method: post
+          path: orders
+          cors: true
+  updateOrder:
+    handler: handler.updateOrder
+    description: Update a Order
+    events:
+      - http:
+          method: put
+          path: orders/{id}
+          cors: true
+  getOrder:
+    handler: handler.getOrder
+    description: Get an Order by ID
+    events:
+      - http:
+          method: get
+          path: orders/{id}
+          cors: true
+  listOrder:
+    handler: handler.listOrder
+    description: List Orders
+    events:
+      - http:
+          method: get
+          path: orders
+          cors: true
+
+resources:
+  Resources:
+    OrdersDynamoDbTable:
+      Type: "AWS::DynamoDB::Table"
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: "id"
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: "id"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        StreamSpecification:
+          StreamViewType: "NEW_AND_OLD_IMAGES"
+        TableName: ${self:provider.environment.ORDERS_TABLE}
