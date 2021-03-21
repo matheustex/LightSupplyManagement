@@ -1,0 +1,11 @@
+service:
+  name: lightscm
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+  stage: ${opt:stage, self:provider.stage}

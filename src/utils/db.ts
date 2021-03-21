@@ -1,5 +1,5 @@
-const uuid = require('uuid');
-const AWS = require('aws-sdk');
+import { v4 as uuid } from 'uuid';
+import AWS from 'aws-sdk';
 
 AWS.config.setPromisesDependency(require('bluebird'));
 
@@ -66,13 +66,7 @@ export class DB {
     return dynamoDb.scan(params).promise()
       .then((data) => {
         console.log(data);
-        return {
-          statusCode: 200,
-          headers: {
-            "Access-Control-Allow-Origin": "*" // Required for CORS support to work
-          },
-          body: JSON.stringify(data.Items)
-        }
+        return data.Items;
       }).catch((err) => {
         console.log('Error:', err)
         return err;
@@ -116,7 +110,7 @@ export class DB {
     const now = new Date().toISOString();
     return {
       ...item,
-      id: uuid.v1(),
+      id: uuid(),
       created: now,
       updated: now
     };

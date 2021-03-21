@@ -51,8 +51,8 @@ export class OrdersService {
 
   protected async listOrders (): Promise<Order> {
     try {
-      const orderUpdated = await this.db.list(this.table)
-      return orderUpdated;
+      const orders = await this.db.list(this.table)
+      return orders;
     } catch (error) {
       console.error(error);
 

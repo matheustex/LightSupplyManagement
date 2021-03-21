@@ -17,6 +17,9 @@ class Result {
 
   bodyToString () {
     return {
+      headers: {
+        "Access-Control-Allow-Origin": "*" // Required for CORS support to work
+      },
       statusCode: this.statusCode,
       body: JSON.stringify({
         code: this.code,
