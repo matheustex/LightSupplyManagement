@@ -1,7 +1,4 @@
-enum StatusCode {
-  success = 200,
-}
-
+import { HttpStatusCode } from './http-status-code';
 class Result {
   private statusCode: number;
   private code: number;
@@ -32,13 +29,13 @@ class Result {
 
 export class MessageUtil {
   static success(data: object): any {
-    const result = new Result(StatusCode.success, 0, 'success', data);
+    const result = new Result(HttpStatusCode.Success, 0, 'success', data);
 
     return result.bodyToString();
   }
 
   static error(code: number = 1000, message: string) {
-    const result = new Result(StatusCode.success, code, message);
+    const result = new Result(HttpStatusCode.Success, code, message);
 
     console.log(result.bodyToString());
     return result.bodyToString();

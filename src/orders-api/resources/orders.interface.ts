@@ -1,5 +1,4 @@
-import { Item } from './item';
-export class Order {
+export interface Order {
   id: string;
   name: string;
   related: Date;
@@ -9,5 +8,5 @@ export class Order {
   note: string;
   quantity: number;
   total: number;
-  items: Item[];
+  items: any[];
 }

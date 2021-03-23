@@ -1,5 +1,5 @@
-import { Order } from '../../model/order';
-import { DB } from '../../utils/db';
+import { Order } from './orders.model';
+import { DB } from '../../../shared/db';
 
 
 export class OrdersService {
@@ -14,17 +14,13 @@ export class OrdersService {
    * Create Order
    * @param params
    */
-  protected async createOrder (params: Order): Promise<Order> {
+   async createOrder (params: Order): Promise<Order> {
     try {
       const { related, name } = params;
-
-      
 
       if (typeof related !== 'string' && typeof name !== 'string') {
         throw new Error('No related date found');
       }
-
-      console.log(this.table);
 
       const request = { ...params, status: 'PENDING', total: 0, quantity: 0};
       const response = await this.db.save(this.table, request)
@@ -42,7 +38,7 @@ export class OrdersService {
    * @param id
    * @param data
    */
-  protected async updateOrder (order: Order): Promise<Order> {
+  public async updateOrder (order: Order): Promise<Order> {
     try {
       const orderUpdated = await this.db.update(this.table, order);
       return orderUpdated;
@@ -53,7 +49,7 @@ export class OrdersService {
     }
   }
 
-  protected async listOrders (): Promise<Order> {
+  public async listOrders (): Promise<Order> {
     try {
       const orders = await this.db.findAll(this.table)
       return orders;
@@ -64,7 +60,7 @@ export class OrdersService {
     }
   }
 
-  protected async getOrder (id: string): Promise<Order> {
+  public async getOrder (id: string): Promise<Order> {
     try {
       const orderUpdated = await this.db.findOne(this.table, id)
       return orderUpdated;

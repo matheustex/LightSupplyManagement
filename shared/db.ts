@@ -1,14 +1,8 @@
 import { v4 as uuid } from 'uuid';
-import AWS from './aws';
-
-AWS.config.setPromisesDependency(require('bluebird'));
-
-const dynamoDb = new AWS.DynamoDB.DocumentClient({
-  convertEmptyValues: true
-});
+import dynamoDb from './dynamoAdapter';
 
 export class DB {
-  save(table: string, req: any): Promise<any> {
+  async save(table: string, req: any): Promise<any> {
     console.log('START CREATE REQUEST');
 
     let item = this.buildModel(req);
@@ -18,8 +12,10 @@ export class DB {
       Item: item,
     };
 
-    return dynamoDb.put(params).promise()
+    const response = await dynamoDb.put(params).promise()
       .then(() => {
+        console.log("Saving");
+
         return {
           item
         }
@@ -27,6 +23,8 @@ export class DB {
         console.log('Error:', err)
         return err;
       })
+
+    return response;
   }
 
   findOne(table: string, id: string): any {

@@ -1,6 +1,6 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
-import { DB } from '../../utils/db';
+import { DB } from '../../shared/db';
 
 const db: DB = new DB();
 

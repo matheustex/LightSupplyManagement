@@ -1,19 +1,19 @@
-import { MessageUtil } from '../../utils/message';
+import { MessageUtil } from '../../../shared/message';
 import { OrdersService } from './orders.service';
 import { Context } from 'aws-lambda';
-import { Order } from '../../model/order';
+import { Order } from './orders.model';
 
-export class OrdersController extends OrdersService {
-  constructor () {
-    super();
-  }
+export class OrdersController {
+  constructor (private readonly _service: OrdersService) {}
 
   async save (event: any, context?: Context) {
     console.log('functionName', context?.functionName);
     const params: Order = JSON.parse(event.body);
 
     try {
-      const result = await this.createOrder(params);
+      const result = await this._service.createOrder(params);
+
+      console.log(result);
 
       return MessageUtil.success(result);
     } catch (err) {
@@ -39,7 +39,7 @@ export class OrdersController extends OrdersService {
   async get (event: any) {
     try {
       const id: string = event.pathParameters.id;
-      const result = await this.get(id);
+      const result = await this._service.getOrder(id);
 
       return MessageUtil.success(result);
     } catch (err) {
@@ -51,7 +51,7 @@ export class OrdersController extends OrdersService {
 
   async findAll () {
     try {
-      const result = await this.listOrders();
+      const result = await this._service.listOrders();
 
       return MessageUtil.success(result);
     } catch (err) {

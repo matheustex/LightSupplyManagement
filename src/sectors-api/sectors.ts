@@ -1,4 +1,4 @@
-import { DB } from '../../utils/db';
+import { DB } from '../../shared/db';
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 

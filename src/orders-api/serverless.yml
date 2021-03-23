@@ -33,7 +33,7 @@ provider:
 
 functions:
   createOrder:
-    handler: handler.createOrder
+    handler: orders.createOrder
     description: Create a new Order
     events:
       - http:
@@ -41,7 +41,7 @@ functions:
           path: orders
           cors: true
   updateOrder:
-    handler: handler.updateOrder
+    handler: orders.updateOrder
     description: Update a Order
     events:
       - http:
@@ -49,7 +49,7 @@ functions:
           path: orders/{id}
           cors: true
   getOrder:
-    handler: handler.getOrder
+    handler: orders.getOrder
     description: Get an Order by ID
     events:
       - http:
@@ -57,7 +57,7 @@ functions:
           path: orders/{id}
           cors: true
   listOrder:
-    handler: handler.listOrder
+    handler: orders.listOrder
     description: List Orders
     events:
       - http:
