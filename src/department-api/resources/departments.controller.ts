@@ -1,17 +1,16 @@
+import { DepartmentsService } from './departments.service';
 import { MessageUtil } from '../../../shared/message';
-import { OrdersService } from './orders.service';
 import { Context } from 'aws-lambda';
-import { Order } from './orders.model';
+import { Department } from './departments.model';
 
-export class OrdersController {
-  constructor (private readonly _service: OrdersService) {}
+export class DepartmentsController {
+  constructor (private readonly service: DepartmentsService) {}
 
   async save (event: any, context?: Context) {
-    console.log('functionName', context?.functionName);
-    const params: Order = JSON.parse(event.body);
+    const params: Department = JSON.parse(event.body);
 
     try {
-      const result = await this._service.createOrder(params);
+      const result = await this.service.createDepartment(params);
 
       return MessageUtil.success(result);
     } catch (err) {
@@ -23,7 +22,7 @@ export class OrdersController {
     const body: object = JSON.parse(event.body);
 
     try {
-      const result = await this.update(body);
+      const result = await this.service.update(body);
       return MessageUtil.success(result);
     } catch (err) {
       return MessageUtil.error(err.code, err.message);
@@ -33,7 +32,7 @@ export class OrdersController {
   async get (event: any) {
     try {
       const id: string = event.pathParameters.id;
-      const result = await this._service.getOrder(id);
+      const result = await this.service.getDepartmanet(id);
 
       return MessageUtil.success(result);
     } catch (err) {
@@ -43,7 +42,7 @@ export class OrdersController {
 
   async findAll () {
     try {
-      const result = await this._service.listOrders();
+      const result = await this.service.listDepartments();
 
       return MessageUtil.success(result);
     } catch (err) {

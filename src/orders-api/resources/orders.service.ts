@@ -1,13 +1,10 @@
+import { DB } from './../../../shared/db';
 import { Order } from './orders.model';
-import { DB } from '../../../shared/db';
 
-
-export class OrdersService {
-  private db: DB;
-  private table: string = process.env.ORDERS_TABLE;
+export class OrdersService extends DB<Order, string> {
 
   constructor() {
-    this.db = new DB();
+    super(process.env.ORDERS_TABLE)
   }
 
   /**
@@ -23,7 +20,7 @@ export class OrdersService {
       }
 
       const request = { ...params, status: 'PENDING', total: 0, quantity: 0};
-      const response = await this.db.save(this.table, request)
+      const response = await this.save(request)
 
       return response;
     } catch (err) {
@@ -40,7 +37,7 @@ export class OrdersService {
    */
   public async updateOrder (order: Order): Promise<Order> {
     try {
-      const orderUpdated = await this.db.update(this.table, order);
+      const orderUpdated = await this.update(order);
       return orderUpdated;
     } catch (error) {
       console.error(error);
@@ -51,7 +48,7 @@ export class OrdersService {
 
   public async listOrders (): Promise<Order> {
     try {
-      const orders = await this.db.findAll(this.table)
+      const orders = await this.findAll()
       return orders;
     } catch (error) {
       console.error(error);
@@ -62,7 +59,7 @@ export class OrdersService {
 
   public async getOrder (id: string): Promise<Order> {
     try {
-      const orderUpdated = await this.db.findOne(this.table, id)
+      const orderUpdated = await this.findOne(id)
       return orderUpdated;
     } catch (error) {
       console.error(error);

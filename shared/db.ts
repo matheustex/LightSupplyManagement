@@ -1,65 +1,32 @@
+import { DBBase } from './interfaces/db-base.interface';
 import { v4 as uuid } from 'uuid';
 import dynamoDb from './dynamoAdapter';
+import { utils } from './utils';
 
-export class DB {
-  async save(table: string, req: any): Promise<any> {
-    console.log('START CREATE REQUEST');
+export class DB<T, ID> implements DBBase<T, ID> {
+  protected table: string;
+  constructor(table){
+    this.table = table;
+  };
 
-    let item = this.buildModel(req);
+  async save(req: T): Promise<T> {
+    const item = this.buildModel(req);
 
     const params = {
-      TableName: table,
+      TableName: this.table,
       Item: item,
     };
 
-    const response = await dynamoDb.put(params).promise()
-      .then(() => {
-        console.log("Saving");
-
-        return {
-          item
-        }
-      }).catch((err) => {
+    await dynamoDb.put(params).promise()
+      .catch((err) => {
         console.log('Error:', err)
         return err;
       })
 
-    return response;
+    return item;
   }
 
-  findOne(table: string, id: string): any {
-    const params = {
-      TableName: table,
-      Key: {
-        id: id
-      },
-    };
-
-    return dynamoDb.get(params).promise()
-      .then(({Item}) => {
-        return Item;
-      }).catch((err) => {
-        console.log('Error:', err)
-        return err;
-      });
-  }
-
-  findAll(table: string) {
-    const params = {
-      TableName: table
-    };
-
-    return dynamoDb.scan(params).promise()
-      .then((data) => {
-        console.log(data);
-        return data.Items;
-      }).catch((err) => {
-        console.log('Error:', err)
-        return err;
-      });
-  }
-  
-  update(table: string, item: any) {
+  async update(item: any): Promise<any> {
     item.updated = new Date().toISOString();
 
     let updateExpression = 'set ';
@@ -76,7 +43,7 @@ export class DB {
     updateExpression = updateExpression.slice(0, -1);
 
     const params = {
-      TableName: table,
+      TableName: this.table,
       Key: {
         'id': item.id
       },
@@ -85,20 +52,52 @@ export class DB {
       ExpressionAttributeValues: expressionAttributeValues
     };
 
-   return dynamoDb.update(params).promise();
+   const { Attributes: itemUpdated } = await dynamoDb.update(params).promise();
+
+    return itemUpdated;
   }
 
+  async findOne(id: ID): Promise<any> {
+    const params = {
+      TableName: this.table,
+      Key: {
+        id: id
+      },
+    };
+
+    const { Item } = await dynamoDb.get(params).promise()
+      .catch((err) => {
+        console.log('Error:', err)
+        return err;
+      });
+
+    return Item;
+  }
+
+  async findAll(): Promise<any> {
+    const params = {
+      TableName: this.table
+    };
+
+    const { Items = [] } = await dynamoDb.scan(params).promise()
+      .catch((err) => {
+        console.log('Error:', err)
+        return err;
+      });
+
+    return Items;
+  }
+  
   delete() {
     return "teste";
   }
 
   private buildModel(item: any) {
-    const now = new Date().toISOString();
     return {
       ...item,
       id: uuid(),
-      created: now,
-      updated: now
+      created: utils.now(),
+      updated: utils.now()
     };
   };
 }

@@ -1,0 +1,85 @@
+service:
+  name: lightscm-departments-api
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+custom: ${file(../../serverless.common.yml):custom}
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-2
+  apiGateway:
+    minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    DEPARTMENTS_TABLE: departments-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
+
+functions:
+  createOrder:
+    handler: departments.createOrder
+    description: Create a new Department
+    events:
+      - http:
+          method: post
+          path: departments
+          cors: true
+  updateOrder:
+    handler: departments.updateOrder
+    description: Update a Department
+    events:
+      - http:
+          method: put
+          path: departments/{id}
+          cors: true
+  getOrder:
+    handler: departments.getOrder
+    description: Get an Department by ID
+    events:
+      - http:
+          method: get
+          path: departments/{id}
+          cors: true
+  listOrder:
+    handler: departments.listOrder
+    description: List Departments
+    events:
+      - http:
+          method: get
+          path: departments
+          cors: true
+
+resources:
+  Resources:
+    OrdersDynamoDbTable:
+      Type: "AWS::DynamoDB::Table"
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: "id"
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: "id"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        StreamSpecification:
+          StreamViewType: "NEW_AND_OLD_IMAGES"
+        TableName: ${self:provider.environment.DEPARTMENTS_TABLE}
