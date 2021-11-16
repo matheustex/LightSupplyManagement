@@ -6,7 +6,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "aws-sdk": "^2.635.0",
+    "aws-sdk": "^2.814.0",
     "aws-xray-sdk": "^3.2.0",
     "bluebird": "^3.7.2",
     "copy-webpack-plugin": "^8.0.0",
